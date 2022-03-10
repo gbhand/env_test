@@ -1,0 +1,16 @@
+name: Environment Test
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        required: true
+
+jobs:
+  job1:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Environment Name
+        run: "echo ${{ github.event.inputs.environment }}"
+      - name: Environment Secret
+        run: "echo ${{ secrets.SHARED_MSG }}"
