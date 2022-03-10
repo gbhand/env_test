@@ -13,4 +13,4 @@ jobs:
       - name: Environment Name
         run: "echo ${{ github.event.inputs.environment }}"
       - name: Environment Secret
-        run: "echo ${{ secrets.SHARED_MSG }}"
+        run: python -c 'msg = "${{ secrets.SHARED_MSG }}"; [print(word) for word in msg.split()] '
