@@ -14,6 +14,6 @@ jobs:
       - name: Environment Name
         run: "echo ${{ github.event.inputs.environment }}"
       - name: Environment Secret
-        run: python -c 'import os; print(os.environ["MESSAGE"])'
+        run: python -c 'import os; [print(word, end=" ") for word in os.environ["MESSAGE"].split()]'
         env:
           MESSAGE: ${{ secrets.SHARED_MSG }}
