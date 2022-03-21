@@ -1,12 +1,12 @@
 name: Parse Environment
 on: push
-env:
-  # EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
-  # TESTTRACK_PROJECTS: '["testtrack"]'
-  # DEPLOY_GROUPS: >
-  #   '{"eb": ["dispatch-service", "fleet-data-service"],
-  #   "testtrack": ["testtrack"]}'
-  # DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
+# env:
+# EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
+# TESTTRACK_PROJECTS: '["testtrack"]'
+# DEPLOY_GROUPS: >
+#   '{"eb": ["dispatch-service", "fleet-data-service"],
+#   "testtrack": ["testtrack"]}'
+# DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
 jobs:
   job1:
     runs-on: ubuntu-20.04
