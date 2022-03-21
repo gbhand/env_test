@@ -4,10 +4,10 @@ env:
   # EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
   # TESTTRACK_PROJECTS: '["testtrack"]'
   DEPLOY_GROUPS: >
-    '{
+    {
     "eb": ["dispatch-service", "fleet-data-service"],
     "testtrack": ["testtrack"]
-    }'
+    }
 # DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
 jobs:
   job1:
@@ -25,3 +25,4 @@ jobs:
             let g = process.env.DEPLOY_GROUPS;
             console.log(g)
             console.log(JSON.stringify(g));
+            console.log(JSON.parse(g));
