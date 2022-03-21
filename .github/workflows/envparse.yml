@@ -3,9 +3,9 @@ on: push
 env:
   # EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
   # TESTTRACK_PROJECTS: '["testtrack"]'
-  DEPLOY_GROUPS: >
-    '{"eb": ["dispatch-service", "fleet-data-service"],
-    "testtrack": ["testtrack"]}'
+  # DEPLOY_GROUPS: >
+  #   '{"eb": ["dispatch-service", "fleet-data-service"],
+  #   "testtrack": ["testtrack"]}'
   # DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
 jobs:
   job1:
@@ -15,8 +15,11 @@ jobs:
     steps:
       - name: Find matching group
         uses: actions/github-script@9ac08808f993958e9de277fe43a64532a609130e
+        env:
+          EB: '["dispatch-service", "fleet-data-service"]'
+          TESTTRACK: '["testtrack"]'
         with:
           script: |
-            let g = process.env.DEPLOY_GROUPS;
+            let g = process.env;
             console.log(g)
             console.log(JSON.parse(g));
