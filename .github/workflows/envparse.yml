@@ -15,4 +15,4 @@ jobs:
         with:
           script: |
             console.log(process.env.GROUPS)
-            console.log(fromJSON(process.env.GROUPS));
+            console.log(JSON.parse(process.env.GROUPS));
