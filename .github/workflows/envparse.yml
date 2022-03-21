@@ -3,7 +3,11 @@ on: push
 env:
   # EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
   # TESTTRACK_PROJECTS: '["testtrack"]'
-  DEPLOY_GROUPS: '{"EB": ["dispatch-service", "fleet-data-service"]}'
+  DEPLOY_GROUPS: >
+    '{
+    "eb": ["dispatch-service", "fleet-data-service"],
+    "testtrack": ["testtrack"]
+    }'
 jobs:
   job1:
     runs-on: ubuntu-20.04
