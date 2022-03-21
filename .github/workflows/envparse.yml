@@ -3,7 +3,7 @@ on: push
 env:
   # EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
   # TESTTRACK_PROJECTS: '["testtrack"]'
-  GROUPS: '{EB: ["dispatch-service", "fleet-data-service"]}'
+  DEPLOY_GROUPS: '{"EB": ["dispatch-service", "fleet-data-service"]}'
 jobs:
   job1:
     runs-on: ubuntu-20.04
@@ -14,5 +14,5 @@ jobs:
         uses: actions/github-script@9ac08808f993958e9de277fe43a64532a609130e
         with:
           script: |
-            console.log(process.env.GROUPS)
-            console.log(JSON.parse(process.env.GROUPS));
+            console.log(process.env.DEPLOY_GROUPS)
+            console.log(JSON.parse(process.env.DEPLOY_GROUPS));
