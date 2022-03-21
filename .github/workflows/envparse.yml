@@ -8,21 +8,40 @@ env:
     "eb": ["dispatch-service", "fleet-data-service"],
     "testtrack": ["testtrack"]
     }
+  TEST_KEY: "fleet-data-service"
 # DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
 jobs:
   job1:
     runs-on: ubuntu-20.04
-    # outputs:
-    #   group: ${{ env.group }}
+    outputs:
+      group: ${{steps.find_group.outputs.result}}
     steps:
       - name: Find matching group
         uses: actions/github-script@9ac08808f993958e9de277fe43a64532a609130e
+        id: find_group
         # env:
         #   EB: '["dispatch-service", "fleet-data-service"]'
         #   TESTTRACK: '["testtrack"]'
         with:
+          result-encoding: "string"
           script: |
-            let g = process.env.DEPLOY_GROUPS;
-            console.log(g)
-            console.log(JSON.stringify(g));
-            console.log(JSON.parse(g));
+            let groups = JSON.parse(process.env.DEPLOY_GROUPS);
+            console.log(groups);
+
+            let test_key = process.env.TEST_KEY;
+            console.log(test_key);
+
+            for (var group in groups) {
+              if (groups[group].includes(test_key)) {
+                console.log(`test key ${test_key} found in ${group}`);
+                return group;
+              }
+            }
+
+            console.log("No matching key found, returning 'None'");
+            return 'None'
+  job2:
+    runs-on: ubuntu-20.04
+    needs: job1
+    steps:
+      - run: echo "${{ needs.job1.outputs.group }}"
