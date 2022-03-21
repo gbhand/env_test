@@ -19,5 +19,5 @@ jobs:
         uses: actions/github-script@9ac08808f993958e9de277fe43a64532a609130e
         with:
           script: |
-            console.log(process.env.DEPLOY_GROUPS)
+            console.log(process.env.DEPLOY_GROUPS.replace(/\s/g, ""))
             console.log(JSON.parse(process.env.DEPLOY_GROUPS.replace(/\s/g, "")));
