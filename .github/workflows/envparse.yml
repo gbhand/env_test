@@ -5,8 +5,8 @@ env:
   # TESTTRACK_PROJECTS: '["testtrack"]'
   DEPLOY_GROUPS: >
     {
-    "eb": ["dispatch-service", "fleet-data-service"],
-    "testtrack": ["testtrack"]
+      "eb": ["dispatch-service", "fleet-data-service"],
+      "testtrack": ["testtrack"]
     }
   TEST_KEY: "fleet-data-service"
 # DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
