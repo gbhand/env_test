@@ -1,0 +1,16 @@
+name: Parse Environment
+on: push
+env:
+  EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
+  TESTTRACK_PROJECTS: '["testtrack"]'
+jobs:
+  job1:
+    runs-on: ubuntu-20.04
+    # outputs:
+    #   group: ${{ env.group }}
+    steps:
+      - name: Find matching group
+        uses: actions/github-script@9ac08808f993958e9de277fe43a64532a609130e
+        with:
+          script: |
+            console.log(process.env)
