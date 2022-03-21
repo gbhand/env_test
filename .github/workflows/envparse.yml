@@ -3,12 +3,12 @@ on: push
 env:
   # EB_PROJECTS: '["dispatch-service", "fleet-data-service"]'
   # TESTTRACK_PROJECTS: '["testtrack"]'
-  # DEPLOY_GROUPS: >
-  #   '{
-  #   "eb": ["dispatch-service", "fleet-data-service"],
-  #   "testtrack": ["testtrack"]
-  #   }'
-  DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
+  DEPLOY_GROUPS: >
+    '{
+    "eb": ["dispatch-service", "fleet-data-service"],
+    "testtrack": ["testtrack"]
+    }'
+  # DEPLOY_GROUPS: '{"eb": ["dispatch-service", "fleet-data-service"],"testtrack": ["testtrack"]}'
 jobs:
   job1:
     runs-on: ubuntu-20.04
@@ -20,4 +20,4 @@ jobs:
         with:
           script: |
             console.log(process.env.DEPLOY_GROUPS)
-            console.log(JSON.parse(process.env.DEPLOY_GROUPS));
+            console.log(JSON.parse(process.env.DEPLOY_GROUPS.replace(/\s/g, "")));
